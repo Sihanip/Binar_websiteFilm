@@ -3,14 +3,12 @@ import "./assets/boxicons-2.0.7/css/boxicons.min.css";
 import "./App.scss";
 
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-// BrowserRouter, Routes, Route,
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-
-// import Routing from "./config/Routing";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import Detail from "./pages/detail/Detail";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const Layout = () => {
@@ -25,6 +23,8 @@ function App() {
 
   const router = createBrowserRouter([
     {
+      
+
       path: "/",
       element: <Layout />,
       children: [
@@ -52,22 +52,6 @@ function App() {
     <div>
       <RouterProvider router={router} />
     </div>
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Home />} />
-    //   </Routes>
-    //       <Header />
-    //     <Footer />
-    // </BrowserRouter>
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route>
-    //           <Header  />
-    //           <Routing />
-    //           <Footer />
-    //       </Route>
-    //   </Routes>
-    // </BrowserRouter>
   );
 }
 

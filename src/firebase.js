@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-
+import { FacebookAuthProvider, GithubAuthProvider, getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCahFSzcXHcFLOnqnz3btFSKvVagTIq5Vw",
@@ -12,51 +11,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const aouth = getAuth(app);
+const auth = getAuth(app);
+
 const providerfb = new FacebookAuthProvider()
-const provider = new GoogleAuthProvider();
 const providergit = new GithubAuthProvider()
 
-export const signInWithGoogle = () => {
+export { auth, providerfb, providergit}
 
-  signInWithPopup(aouth, provider)
-    .then((result) => {
-      const name = result.user.displayName;
-      const email = result.user.email;
-      const profilePic = result.user.photoURL;
-
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
-      localStorage.setItem("profilePic", profilePic);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-export const signInWithFacebook = () => {
-
-  signInWithPopup(aouth, providerfb)
-  .then((result) => {
-    console.log(result);
-
-  })
-  .catch((error) => {
-    console.log(error.message);
-    // ...
-  });
-}
-
-export const signInWithGithub = () => {
-
-  signInWithPopup(aouth, providergit)
-  .then((result) => {
-    console.log(result);
-
-  }).catch((error) => {
-    console.log(error.message);
-  });
-}
-
-
-export default app

@@ -40,4 +40,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
 };
 
+export const handleMouseDownPassword = (event) => {
+  event.preventDefault();
+};
+
 export default Button;
